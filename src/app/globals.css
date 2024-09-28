@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #dcdccc;
+    --foreground: #1e1e1e;
+    --card: #c5c5bc;
+    --card-foreground: #2c2c2c;
+    --popover: #ddddc6;
+    --popover-foreground: #2c2c2c;
+    --primary: #f97316;
+    --primary-foreground: #dcdccc;
+    --secondary: #e5e7eb;
+    --secondary-foreground: #1d1d1d;
+    --muted: #d1d5db;
+    --muted-foreground: #6b7280;
+    --accent: #e5e7eb;
+    --accent-foreground: #2c2c2c;
+    --destructive: #dc2626;
+    --destructive-foreground: #dcdccc;
+    --border: #f0dfaf;
+    --input: #f3f4f6;
+    --ring: #dfaf8f;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: #3b3b3b;
+    --foreground: #dcdccc;
+    --card: #474747;
+    --card-foreground: #3d3d3d;
+    --popover: #282828;
+    --popover-foreground: #dcdccc;
+    --primary: #dfaf8f;
+    --primary-foreground: #dcdccc;
+    --secondary: #333333;
+    --secondary-foreground: #dcdccc;
+    --muted: #444444;
+    --muted-foreground: #aaaaaa;
+    --accent: #333333;
+    --accent-foreground: #dcdccc;
+    --destructive: #8cd0d3;
+    --destructive-foreground: #dcdccc;
+    --border: #dfaf8f;
+    --input: #333333;
+    --ring: #dfaf8f;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sanchez), sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-bevan), serif;
+    @apply font-bold tracking-wide;
+  }
+}
+
+@layer components {
+  /* Typography */
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+  h3 {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+  h4 {
+    @apply text-xl md:text-2xl lg:text-3xl;
+  }
+  h5 {
+    @apply text-lg md:text-xl lg:text-2xl;
+  }
+  h6 {
+    @apply text-base md:text-lg lg:text-xl;
+  }
+
+  .text-small {
+    @apply text-sm;
+  }
+  .warning {
+    @apply text-red-600 font-semibold italic;
+  }
+
+  /* Component Styles */
+  .card {
+    @apply bg-card text-card-foreground rounded-lg shadow-md overflow-hidden;
+  }
+
+  .btn {
+    @apply px-4 py-2 rounded-md font-semibold text-sm transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  .input {
+    @apply px-3 py-2 bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring;
+  }
+
+  .phone-frame {
+    @apply w-[280px] h-[580px] bg-[#1e1e1e] rounded-[40px] p-[15px] relative overflow-hidden transition-all duration-300 ease-in-out;
+    box-shadow: 0 0 0 10px #333, 0 0 0 13px #000,
+      0 50px 100px -20px rgba(0, 0, 0, 0.5);
+  }
+
+  .phone-frame::before {
+    @apply content-[''] absolute top-0 left-1/2 -translate-x-1/2 w-[150px] h-[30px] bg-black rounded-b-[20px];
+  }
+
+  .phone-frame::after {
+    @apply content-[''] absolute top-[15px] left-1/2 -translate-x-1/2 w-[60px] h-[5px] bg-[#333] rounded-[10px];
+  }
+
+  .phone-frame .volume-button {
+    @apply absolute left-[-2px] w-[3px] h-[30px] bg-[#333] rounded-l-[2px];
+  }
+
+  .phone-frame .volume-button:nth-child(1) {
+    @apply top-[100px];
+  }
+
+  .phone-frame .volume-button:nth-child(2) {
+    @apply top-[140px];
+  }
+
+  .phone-frame .power-button {
+    @apply absolute right-[-2px] top-[110px] w-[3px] h-[40px] bg-[#333] rounded-r-[2px];
+  }
+
+  .phone-frame .screen {
+    @apply w-full h-full bg-white rounded-[30px] overflow-hidden relative;
+  }
+
+  .phone-frame .screen video {
+    @apply w-full h-full object-cover;
+  }
+
+  .phone-frame:hover {
+    @apply scale-[1.02];
+    box-shadow: 0 0 0 10px #333, 0 0 0 13px #000,
+      0 70px 120px -20px rgba(0, 0, 0, 0.6);
+  }
+}
+
+@layer utilities {
+  @media (max-width: 640px) {
+    .phone-frame {
+      @apply w-[220px] h-[460px];
+    }
+  }
+}

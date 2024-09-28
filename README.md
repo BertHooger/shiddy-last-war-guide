@@ -1,0 +1,1 @@
+This is a website made by a player of Last-War to players for last-war. Last war can be quite complex this website is aimed to provide you with as much information as possible. This site is a continuation of dead website's more original content will be provided.

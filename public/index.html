@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Required | A shiddy Last War Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bevan&family=Sanchez&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Sanchez', 'sans-serif'],
+                        heading: ['Bevan', 'serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            .dark\:bg-gray-900 {
+                background-color: #1a202c;
+            }
+
+            .dark\:text-white {
+                color: #fff;
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white flex flex-col items-center justify-center min-h-screen font-sans">
+    <div class="p-8 bg-white dark:bg-gray-800 rounded-lg shadow-md text-center max-w-2xl w-full mx-4">
+        <h1 class="text-3xl font-heading font-bold mb-6 text-primary">JavaScript Required</h1>
+        <p class="mb-6 text-lg">
+            This website relies on JavaScript to provide an interactive and dynamic experience. Please enable JavaScript
+            in your browser settings to continue exploring our shiddy Last War Guide.
+        </p>
+
+        <button id="redirectButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-6">
+            Get Instructions for your current browser.
+        </button>
+
+        <h2 class="text-2xl font-heading font-semibold mb-4 text-secondary">How to Enable JavaScript</h2>
+
+        <div class="space-y-6 text-left">
+            <div>
+                <h3 class="text-xl font-medium mb-2">Windows</h3>
+                <ol class="list-decimal list-inside space-y-2">
+                    <li>Open your preferred browser (e.g., Chrome, Firefox, Edge).</li>
+                    <li>Navigate to the browser's settings or options menu.</li>
+                    <li>Find the "Privacy and Security" or "Content Settings" section.</li>
+                    <li>Locate the "JavaScript" option and ensure it's set to "Allowed" or "Enabled."</li>
+                    <li>Refresh this page to apply the changes.</li>
+                </ol>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-medium mb-2">Mac</h3>
+                <ol class="list-decimal list-inside space-y-2">
+                    <li>Launch your preferred browser (e.g., Safari, Chrome, Firefox).</li>
+                    <li>Access the browser's "Preferences" or "Settings" menu.</li>
+                    <li>Look for the "Security" or "Privacy" section.</li>
+                    <li>Find the "Enable JavaScript" option and ensure it's checked or enabled.</li>
+                    <li>Refresh this page to apply the changes.</li>
+                </ol>
+            </div>
+        </div>
+
+        <p class="text-sm mt-8 text-gray-600 dark:text-gray-400">
+            If you need further assistance, please consult your browser's help documentation or search online for
+            specific instructions tailored to your browser and operating system.
+        </p>
+    </div>
+    <footer class="mt-8 text-center text-sm text-gray-600 dark:text-gray-400">
+        © 2024 A shiddy Last War Guide. All rights reserved.
+    </footer>
+
+    <script>
+        function detectBrowser() {
+                const userAgent = navigator.userAgent.toLowerCase();
+                if (userAgent.indexOf("chrome") > -1) {
+                    if (userAgent.indexOf("brave") > -1) return "Brave";
+                    return "Chrome";
+                }
+                if (userAgent.indexOf("firefox") > -1) {
+                    if (userAgent.indexOf("tor") > -1) return "Tor Browser";
+                    return "Firefox";
+                }
+                if (userAgent.indexOf("safari") > -1) return "Safari";
+                if (userAgent.indexOf("edge") > -1) return "Edge";
+                if (userAgent.indexOf("opera") > -1 || userAgent.indexOf("opr") > -1) return "Opera";
+                return "Unknown";
+            }
+
+            function getInstructionsUrl(browser) {
+                switch (browser) {
+                    case "Chrome":
+                        return "https://support.google.com/chrome/answer/114662?hl=en";
+                    case "Firefox":
+                        return "https://support.mozilla.org/en-US/kb/javascript-settings-for-interactive-web-pages";
+                    case "Safari":
+                        return "https://support.apple.com/guide/safari/ibrw1074/mac";
+                    case "Edge":
+                        return "https://support.microsoft.com/en-us/microsoft-edge/javascript-in-microsoft-edge-9e9a21d9-6a2d-4f13-9e7b-d5f9c4cc6d8a";
+                    case "Opera":
+                        return "https://help.opera.com/en/latest/web-preferences/#javascript";
+                    case "Brave":
+                        return "https://support.brave.com/hc/en-us/articles/360018205431-How-do-I-enable-JavaScript-";
+                    case "Tor Browser":
+                        return "https://tb-manual.torproject.org/security-settings/";
+                    default:
+                        return "https://www.enable-javascript.com/";
+                }
+            }
+
+            document.getElementById("redirectButton").addEventListener("click", function () {
+                const browser = detectBrowser();
+                const instructionsUrl = getInstructionsUrl(browser);
+                window.location.href = instructionsUrl;
+            });
+    </script>
+</body>
+
+</html>
