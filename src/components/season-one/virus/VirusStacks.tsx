@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { InfoBox } from '@/components/functions/section/info/InfoBox';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Bug, Shield, AlertTriangle, Info, MousePointerClick } from 'lucide-react';
-import { Slider } from "@/components/ui/slider"
-import { Progress } from "@/components/ui/progress"
+import { Slider } from "@/components/ui/slider";
+import { Progress } from "@/components/ui/progress";
 
 const VirusStacks: React.FC = () => {
     const [infectionLevel, setInfectionLevel] = useState(0);

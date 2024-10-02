@@ -1,27 +1,42 @@
-import React, { Component, ErrorInfo } from "react";
+"use client"
 
-import { Props, State } from "@/lib/interfaces/security/errorBoundary";
+import React, { Component, ErrorInfo, ReactNode } from 'react';
 
-class ErrorBoundary extends Component<Props, State> {
-    public state: State = {
-        hasError: false
-    };
+interface ErrorBoundaryProps {
+    children: ReactNode;
+}
+
+interface ErrorBoundaryState {
+    hasError: boolean;
+}
+
+class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+    constructor(props: ErrorBoundaryProps) {
+        super(props);
+        this.state = { hasError: false };
+    }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    public static getDerivedStateFromError(_: Error): State {
+    static getDerivedStateFromError(_: Error): ErrorBoundaryState {
         return { hasError: true };
     }
 
-    public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    componentDidCatch(error: Error, errorInfo: ErrorInfo) {
         console.error("Uncaught error:", error, errorInfo);
     }
 
-    public render() {
+    render() {
         if (this.state.hasError) {
             return (
-                <div className="text-center p-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                    <h1 className="text-2xl font-bold mb-2">Oops, there was an error!</h1>
-                    <p>Something went wrong. Please try refreshing the page or contact support if the problem persists.</p>
+                <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+                    <h1 className="text-4xl font-bold text-red-600 mb-4">Oops! Something went wrong.</h1>
+                    <p className="text-lg text-gray-600 dark:text-gray-400 mb-4">We&apos;re sorry for the inconvenience. Please try refreshing the page.</p>
+                    <button
+                        onClick={() => window.location.reload()}
+                        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+                    >
+                        Refresh Page
+                    </button>
                 </div>
             );
         }

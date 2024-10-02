@@ -79,9 +79,9 @@ const VideoPlayer: React.FC<VideoProps> = ({ src, poster }) => {
                 poster={poster}
                 playsInline
                 preload="metadata"
-                onMouseMove={() => setShowControls(true)} // Show controls on mouse move
+                onMouseMove={() => setShowControls(true)}
             />
-            {showControls && ( // Conditionally render controls
+            {showControls && (
                 <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 flex justify-between items-center transition-opacity duration-300">
                     <button onClick={togglePlay} className="focus:outline-none">
                         {isPlaying ? <Pause size={20} /> : <Play size={20} />}
@@ -92,12 +92,11 @@ const VideoPlayer: React.FC<VideoProps> = ({ src, poster }) => {
                             style={{ width: `${progress}%` }}
                             onClick={handleProgressClick}
                         >
-                            <div className="h-full bg-white rounded-full"></div> {/* Progress indicator */}
+                            <div className="h-full bg-white rounded-full"></div>
                         </div>
                         <button onClick={toggleMute} className="focus:outline-none">
                             {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
                         </button>
-                        {/* Add more controls here if needed (e.g., fullscreen, settings) */}
                         <button className="focus:outline-none ml-2">
                             <Settings size={20} />
                         </button>

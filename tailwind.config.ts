@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import type { Config } from "tailwindcss";
+import { colorScheme } from "./src/lib/config/colorScheme";
 
 const config: Config = {
 	darkMode: ["class"],
@@ -22,6 +23,12 @@ const config: Config = {
 				heading: ['var(--font-bevan)', 'serif'],
 			},
 			colors: {
+				colors: Object.fromEntries(
+					Object.entries(colorScheme).map(([color, shades]) => [
+						color,
+						Object.fromEntries(shades.map((shade, index) => [`${(index + 1) * 100}`, shade]))
+					])
+				),
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",
 				ring: "hsl(var(--ring))",

@@ -6,7 +6,8 @@ import { useRouter } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, } from "@/components/ui/card";
 import DownloadButton from "../functions/navigation/DownloadButton";
-import CommentSection from "../functions/section/CommentSection";
+
+import CommentSection from "../functions/section/thread/ThreadSection";
 
 const LandingPage = () => {
     const router = useRouter();
@@ -104,8 +105,8 @@ const LandingPage = () => {
                 <h2 className="text-3xl font-bold text-center mb-8 text-primary"> {/* Adjusted text color */}
                     Share Your Thoughts
                 </h2>
-                <CommentSection />
             </section>
+            <CommentSection />
         </div>
     );
 };

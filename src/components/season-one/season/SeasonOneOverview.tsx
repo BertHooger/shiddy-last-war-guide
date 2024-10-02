@@ -1,8 +1,11 @@
 import Image from 'next/image';
+import { getImage } from '@/lib/images/season/season-one/intro/introImages';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BookMarked } from 'lucide-react';
 
 export default function SeasonOverview() {
+    const ladyInRedImage = getImage('ladyInRed');
+
     return (
         <Card className="w-full">
             <CardHeader>
@@ -30,10 +33,10 @@ export default function SeasonOverview() {
                     <div className="flex justify-center md:justify-end items-start">
                         <div className="rounded-lg shadow-md overflow-hidden border border-gray-300 hover:shadow-lg transition-shadow duration-300">
                             <Image
-                                src="/images/season-one/intro-story-image.png"
-                                alt="Lady in Red"
-                                width={416}
-                                height={801}
+                                src={ladyInRedImage.src}
+                                alt={ladyInRedImage.alt}
+                                width={ladyInRedImage.width}
+                                height={ladyInRedImage.height}
                                 className="max-w-full h-auto"
                             />
                         </div>

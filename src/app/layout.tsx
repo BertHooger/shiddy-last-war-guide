@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Bevan, Sanchez, Oswald } from "next/font/google";
-import Header from "@/components/functions/navigation/Header";
-import { Footer } from "@/components/functions/navigation/Footer";
-import { Providers } from "@/components/functions/security/Providers";
+import DynamicHeader from "@/components/functions/navigation/dynamic/DynamicHeader";
+import DynamicFooter from "@/components/functions/navigation/dynamic/DynamicFooter";
+import { Analytics } from '@vercel/analytics/react';
 import "./globals.css";
+
+import ErrorBoundary from "@/components/functions/security/ErrorBoundary";
+import Provider from "@/components/functions/security/SessionProvider";
 
 const bevan = Bevan({
   weight: "400",
@@ -49,16 +52,19 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${bevan.variable} ${sanchez.variable} ${oswald.variable}`}>
       <body className="font-sans antialiased">
-        <noscript>
-          <meta httpEquiv="refresh" content="0; url=/index.html" />
-        </noscript>
-        <Providers>
-          <Header />
-          <main className="container mx-auto px-4 py-8 max-w-4xl">
-            {children}
-          </main>
-          <Footer />
-        </Providers>
+        <Provider>
+          <noscript>
+            <meta httpEquiv="refresh" content="0; url=/index.html" />
+          </noscript>
+          <DynamicHeader />
+          <ErrorBoundary>
+            <main className="container flex mx-auto px-4 max-w-4xl py-8">
+              {children}
+            </main>
+          </ErrorBoundary>
+          <DynamicFooter />
+          <Analytics />
+        </Provider>
       </body>
     </html>
   );

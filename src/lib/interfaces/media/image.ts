@@ -13,27 +13,6 @@ export interface ImageWithCaption {
     caption: string;
 }
 
-export interface TextWithIconProps {
-    text: string;
-    iconSrc?: string;
-    iconAlt?: string;
-    iconSize?: number;
-};
-
-export interface ImageTextPairProps {
-    imageSrc: string;
-    imageAlt: string;
-    title: string;
-    content: string;
-    imagePosition?: 'left' | 'right';
-}
-
-export interface ImageTextPairWrapperProps {
-    reverse?: boolean;
-    children: React.ReactNode;
-}
-
-
 export interface VideoProps {
     src: string;
     title: string;
@@ -46,11 +25,6 @@ export interface ImageTextPairProps {
     title: string;
     content: string;
     imagePosition?: 'left' | 'right';
-}
-
-export interface ImageTextPairWrapperProps {
-    reverse?: boolean;
-    children: React.ReactNode;
 }
 
 export interface BuildingImageProps {
